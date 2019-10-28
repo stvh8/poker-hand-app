@@ -1,0 +1,36 @@
+@import '../../../theme/variables.scss';
+.docs-footer{
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  margin-top: 0px;
+  padding: 0 12px;
+  font-size: 12px;
+  background: $color-00b;
+  color: $color-fff;
+  font-family: $font-stack;
+  .docs-footer-list {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 8px;
+    .docs-footer-copyright{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+    }
+  }
+}
