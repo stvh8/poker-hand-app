@@ -17,7 +17,7 @@ const RankCodes = [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K",
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private _gameData: any;
+  private _gameData: any = { rounds: [] };
   public results: any;
   public fileToUpload: any;
   public dataInput: string = "";

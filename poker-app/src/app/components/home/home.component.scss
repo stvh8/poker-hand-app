@@ -35,6 +35,10 @@ header.header-background {
     padding: 20px 0;
   }
 
+  .data-input-help {
+    font-size: 14px;
+  }
+
   .data-input {
     width: 440px;
     height: 200px;
@@ -69,6 +73,29 @@ header.header-background {
 
   .mat-card-title {
     font-size: 20px;
+  }
+
+  @-webkit-keyframes borderBlink {
+    from, to {
+      border-color: transparent
+    }
+    50% {
+      border-color: red
+    }
+  }
+  @keyframes borderBlink {
+    from, to {
+      border-color: transparent
+    }
+    50% {
+      border-color: red
+    }
+  }
+
+  .winner {
+    border:2px solid red;
+    -webkit-animation: borderBlink 1s step-end infinite;
+    animation: borderBlink 1s step-end infinite;
   }
 
   .card-image {

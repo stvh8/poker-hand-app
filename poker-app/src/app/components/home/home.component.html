@@ -9,17 +9,21 @@
 
 <div class="actions">
   <button mat-raised-button (click)="runEmbeddedData()">
-    Run using embedded library sample data
+    Run using embedded library sample JSON data
   </button>
 
   <div class="or">OR</div>
 
-  <div>
-    <textarea class="data-input" placeholder="Paste JSON data here" (change)="doDataInputChange($event)" [value]="dataInput"></textarea>
+  <div class="data-input-container">
+    <textarea class="data-input" placeholder="Paste JSON data here..." (change)="doDataInputChange($event)" [value]="dataInput"></textarea>
   </div>
   <button mat-raised-button (click)="runUploadedData()">
     Run using custom uploaded JSON data (pasted in the field above)
   </button>
+  <br/><br/>
+  <div class="data-input-help">
+    Need help with your JSON data?  Why not read the documentation <a href="https://github.com/darthmayhem/poker-hand-app/blob/master/readme.md" target="_blank">here</a>?
+  </div>
 </div>
 
 
@@ -34,7 +38,7 @@
             <mat-card-subtitle>{{ round.players[0].hand.getScore().rank.name }}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <div *ngFor="let player of round.players">
+            <div *ngFor="let player of round.players; index as j" class="{{ j === 0 ? 'winner' : ''}}">
               {{ player.name }} ({{ player.hand.getScore().rank.name }})
               <div>
                 <span *ngFor="let card of player.hand.cards">
