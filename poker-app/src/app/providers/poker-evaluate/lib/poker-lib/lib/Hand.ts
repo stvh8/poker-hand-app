@@ -110,7 +110,18 @@ class Kinds {
   public all (numOfKinds: number): KindsGroup[] | false {
     let result: KindsGroup[] = [];
 
-    for (let rank of Object.keys(this.kinds)) {
+    // get the ranks keys and sort descending
+    const ranks = Object.keys(this.kinds).sort((a, b) => {
+      if (a > b) {
+        return -1;
+      } else if (a < b) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    for (let rank of ranks) {
       if (this.kinds[rank].length === numOfKinds) {
         result.push({
           cards: this.kinds[rank],
@@ -163,73 +174,9 @@ export class Hand {
     return this.cards.every(c => c.suit === suit);
   }
 
-  // /**
-  //  * evals if a straight
-  //  */
-  // private isStraight (): boolean {
-  //   return this.isAceHighStraight() || this.isAceLowStraight();
-  // }
-
-  // /**
-  //  * evals if an ace high straight
-  //  */
-  // private isAceHighStraight (): boolean {
-  //   let high, low, ranks: number[] = [];
-  //
-  //   high = low = this.cards[0].rank;
-  //
-  //   for (let i = 0; i < this.cards.length; i++) {
-  //     let c = this.cards[i];
-  //     let r = c.rank;
-  //
-  //     if (r === 1) r = 14;
-  //
-  //     if (ranks.indexOf(r) !== -1) return false;
-  //     ranks.push(r);
-  //
-  //     if (r > high) high = r;
-  //     if (r < low) low = r;
-  //   }
-  //
-  //   return high - low === 4;
-  // }
-
-  // /**
-  //  * evals if a ace low straight
-  //  */
-  // private isAceLowStraight (): boolean {
-  //   let high, low, ranks: number[] = [];
-  //
-  //   high = low = this.cards[0].rank;
-  //
-  //   for (let i = 0; i < this.cards.length; i++) {
-  //     let c = this.cards[i];
-  //     let r = c.rank;
-  //
-  //     if (ranks.indexOf(r) !== -1) return false;
-  //     ranks.push(r);
-  //
-  //     if (r > high) high = r;
-  //     if (r < low) low = r;
-  //   }
-  //
-  //   return high - low === 4;
-  // }
-
-  public has (...ranks: number[]): boolean {
-    return this.cards.some(c => {
-      let r = c.rank, i = ranks.indexOf(r);
-
-      if (i !== -1) {
-        ranks.splice(i, 1);
-      }
-
-      return ranks.length === 0;
-    });
-  }
-
   /**
    * determines a hand score
+   * supports flush, three of a kind, 2 of a kind, and high card rules
    */
   public getScore (): Score {
     let kinds = new Kinds(this.cards);

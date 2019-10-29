@@ -19,13 +19,45 @@ const RankCodes = [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K",
 export class HomeComponent implements OnInit {
   private _gameData: any;
   public results: any;
+  public fileToUpload: any;
+  public dataInput: string = "";
 
   constructor(
     private _pokerService: PokerEvaluateService
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  /**
+   * runs the ui evaluation using data within library
+   */
+  runEmbeddedData() {
     this._gameData = sampleData;
+    this._pokerService.create(this._gameData);
+    this.results = this._pokerService.getResults();
+
+    this.logResults();
+  }
+
+  /**
+   * fires on change of data input field
+   * @param ev
+   */
+  doDataInputChange(ev: any) {
+    this.dataInput = ev.target.value;
+    try {
+      console.log("data input", this.dataInput);
+      this._gameData = JSON.parse(this.dataInput);
+    } catch (err) {
+      alert("Error parsing JSON\n" + err.message);
+      return;
+    }
+  }
+
+  /**
+   * runs the ui evaluation using data within library
+   */
+  runUploadedData() {
     this._pokerService.create(this._gameData);
     this.results = this._pokerService.getResults();
 

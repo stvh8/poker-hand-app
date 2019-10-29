@@ -7,7 +7,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {
   MatGridListModule,
-  MatCardModule
+  MatCardModule,
+  MatButtonModule
 } from '@angular/material'
 
 @NgModule({
@@ -16,7 +17,8 @@ import {
     RouterModule,
     FlexLayoutModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   declarations: [HomeComponent],
   exports: [HomeComponent]

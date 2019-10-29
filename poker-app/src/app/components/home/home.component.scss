@@ -25,6 +25,22 @@ header.header-background {
   }
 }
 
+.actions {
+  width: 95%;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+
+  .or {
+    padding: 20px 0;
+  }
+
+  .data-input {
+    width: 440px;
+    height: 200px;
+  }
+}
+
 .content-body {
   padding: 20px;
 

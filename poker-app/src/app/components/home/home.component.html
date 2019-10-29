@@ -7,10 +7,26 @@
   </div>
 </header>
 
+<div class="actions">
+  <button mat-raised-button (click)="runEmbeddedData()">
+    Run using embedded library sample data
+  </button>
+
+  <div class="or">OR</div>
+
+  <div>
+    <textarea class="data-input" placeholder="Paste JSON data here" (change)="doDataInputChange($event)" [value]="dataInput"></textarea>
+  </div>
+  <button mat-raised-button (click)="runUploadedData()">
+    Run using custom uploaded JSON data (pasted in the field above)
+  </button>
+</div>
+
+
 <div class="content-body">
-  <div fxLayout="row wrap" fxLayoutGap="60px" fxLayoutAlign="flex-middle">
+  <div fxLayout="row wrap" fxLayoutGap="60px" fxLayoutAlign="center">
     <ng-container *ngFor="let round of results; index as i">
-      <div fxFlex="0 1 calc(33.3% - 70px)" class="result-container">
+      <div fxFlex="0 1 calc(33.3% - 60px)" class="result-container">
         <mat-card class="round-card">
           <mat-card-header>
             <div mat-card-avatar>{{ i+1 }}</div>
