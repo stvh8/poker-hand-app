@@ -5,5 +5,33 @@
       <h2>Completed by <a href="https://www.linkedin.com/in/shaight/" target="_blank">Steve Haight</a></h2>
     </div>
   </div>
-
 </header>
+
+<div class="content-body">
+  <div fxLayout="row wrap" fxLayoutGap="60px" fxLayoutAlign="flex-middle">
+    <ng-container *ngFor="let round of results; index as i">
+      <div fxFlex="0 1 calc(33.3% - 70px)" class="result-container">
+        <mat-card class="round-card">
+          <mat-card-header>
+            <div mat-card-avatar>{{ i+1 }}</div>
+            <mat-card-title>Winner: <b>{{ round.players[0].name }}</b></mat-card-title>
+            <mat-card-subtitle>{{ round.players[0].hand.getScore().rank.name }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div *ngFor="let player of round.players">
+              {{ player.name }} ({{ player.hand.getScore().rank.name }})
+              <div>
+                <span *ngFor="let card of player.hand.cards">
+                  <img
+                    src="/assets/images/cards/{{ getCardImage(card)}}"
+                    class="card-image {{ isScoringCard(player.hand, card) ? 'scoring-card' : ''}}"
+                  />
+                </span>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

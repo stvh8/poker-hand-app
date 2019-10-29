@@ -1,25 +1,66 @@
 @import '../../../theme/variables';
-header.header-background{
-  width: 100%; float: left;
+
+header.header-background {
+  width: 100%;
   margin-bottom: 0px;
   background: url('../../../assets/images/header-bg.svg') 50% repeat-x, #00bcd4;
   padding: 40px 0;
-  .header-section{
+  .header-section {
     text-align: center; font-family: $font-stack;
-    .header-headline{
+    .header-headline {
       color: $color-fff;
-      h1{
+      h1 {
         font-weight: 500; font-size: 32px;
       }
-      h2{
+      h2 {
         font-weight: 300; font-size: 18px;
       }
     }
-    .header-start{
+    .header-start {
       margin-top: 50px;
       a.header-button{
         color: $color-00b; padding: 5px 35px; font-size: 16px; text-transform: uppercase;
       }
     }
+  }
+}
+
+.content-body {
+  padding: 20px;
+
+  .result-container {
+    padding: 10px 0;
+  }
+}
+
+.round-card {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 5px;
+
+  .mat-card-header {
+    //background-color: #00bcd4;
+  }
+
+  .mat-card-avatar {
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-00b;
+  }
+
+  .mat-card-title {
+    font-size: 20px;
+  }
+
+  .card-image {
+    width: 50px;
+    padding: 5px;
+  }
+
+  .card-image.scoring-card {
+    width: 60px;
   }
 }

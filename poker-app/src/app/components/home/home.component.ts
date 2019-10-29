@@ -3,6 +3,14 @@ import { PokerEvaluateService } from "../../providers/poker-evaluate/poker-evalu
 
 import { sampleData } from "../../providers/poker-evaluate/lib/poker-lib/sampleData";
 
+import { Card } from "../../providers/poker-evaluate/lib/poker-lib/lib/Card";
+import { Round } from "../../providers/poker-evaluate/lib/poker-lib/lib/Round";
+import { Hand } from '../../providers/poker-evaluate/lib/poker-lib/lib/Hand';
+
+// used for calculating images
+const SuitCodes = ["S", "C", "H", "D"];
+const RankCodes = [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home.component.html',
@@ -24,10 +32,13 @@ export class HomeComponent implements OnInit {
     this.logResults();
   }
 
+  /**
+   * logs out results to console
+   */
   logResults() {
     let roundCount = 0;
 
-    this.results.forEach((round: any) => {
+    this.results.forEach((round: Round) => {
       roundCount++;
 
       console.log("<<<<<<<< Round {1} >>>>>>>>".replace("{1}", roundCount.toString()));
@@ -40,5 +51,30 @@ export class HomeComponent implements OnInit {
     });
 
     console.log("Rounds processed: " + roundCount + "\n\n");
+  }
+
+  /**
+   * tests if card is a member of the scoring cards
+   * @param hand - the hand with the scoring cards
+   * @param card - the card to be tested against
+   */
+  isScoringCard(hand: Hand, card: Card): boolean {
+    const scoringCard = hand.getScore().scoringCards
+      .filter((item) => item.rank === card.rank && item.suit === card.suit);
+    return !!scoringCard.length;
+  }
+
+  /**
+   * get a card image name
+   * @param card
+   */
+  getCardImage(card: Card): string {
+    let img = "";
+
+    img += RankCodes[card.rank-1];
+    img += SuitCodes[card.suit];
+    img += '.png';
+
+    return img;
   }
 }

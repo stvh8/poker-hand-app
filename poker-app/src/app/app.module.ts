@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { MatGridListModule } from '@angular/material'
-
 import { AppComponent } from './app.component';
 import { TopNavComponent, FooterComponent } from './components/shared';
 import { HomeModule } from './components/home';
@@ -24,8 +22,7 @@ import { PokerEvaluateService } from "./providers/poker-evaluate/poker-evaluate.
     BrowserModule,
     HomeModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
-    // MatGridListModule
+    RouterModule.forRoot(routes)
   ],
   providers: [PokerEvaluateService],
   bootstrap: [AppComponent],

@@ -232,42 +232,10 @@ export class Hand {
    * determines a hand score
    */
   public getScore (): Score {
-    // if (this.isFlush() && this.isStraight()) {
-    //   if (this.has(1, 10, 11, 12, 13)) {
-    //     // Royal flush
-    //     return {
-    //       rank: Ranks.ROYAL_FLUSH,
-    //       scoringCards: this.cards,
-    //     };
-    //   }
-    //
-    //   // Straight flush
-    //   return {
-    //     rank: Ranks.STRAIGHT_FLUSH,
-    //     scoringCards: this.cards,
-    //   };
-    // }
-
     let kinds = new Kinds(this.cards);
-
-    // let has4 = kinds.has(4);
-    //
-    // if (has4) {
-    //   return {
-    //     rank: Ranks.FOUR_OF_A_KIND,
-    //     scoringCards: has4.cards,
-    //   };
-    // }
 
     let has3 = kinds.has(3),
       has2 = kinds.has(2);
-
-    // if (has3 && has2) {
-    //   return {
-    //     rank: Ranks.FULL_HOUSE,
-    //     scoringCards: this.cards,
-    //   };
-    // }
 
     if (this.isFlush()) {
       return {
@@ -277,13 +245,6 @@ export class Hand {
       };
     }
 
-    // if (this.isStraight()) {
-    //   return {
-    //     rank: Ranks.STRAIGHT,
-    //     scoringCards: this.cards,
-    //   };
-    // }
-
     if (has3) {
       return {
         rank: Ranks.THREE_OF_A_KIND,
@@ -291,23 +252,6 @@ export class Hand {
         otherCards: this.cards.filter((item) => item.rank !== (<KindsGroup>has3).cards[0].rank)
       };
     }
-
-    // let all2 = kinds.all(2);
-    //
-    // if (all2 && all2.length === 2) {
-    //   return {
-    //     rank: Ranks.TWO_PAIR,
-    //     scoringCards: (() => {
-    //       let cards: Card[] = [];
-    //
-    //       all2.forEach(kg => {
-    //         cards = cards.concat(kg.cards);
-    //       });
-    //
-    //       return cards;
-    //     })(),
-    //   };
-    // }
 
     if (has2) {
       return {
@@ -319,7 +263,7 @@ export class Hand {
 
     return {
       rank: Ranks.HIGH_CARD,
-      scoringCards: [...this.cards],
+      scoringCards: [this.cards[0]],
       otherCards: []
     };
   }
