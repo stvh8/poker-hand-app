@@ -26,7 +26,7 @@ C) lastly, in the /poker-app directory, run the following command to start the a
 
 ``ng s``
 
-If the above steps completed without error, You will be able to see the application running at [http://localhost:4200]()
+If the above steps completed without error, you will be able to see the application running at [http://localhost:4200]()
 
 ### Please note
 Sample JSON data for running the test can be found here:
@@ -35,6 +35,8 @@ Sample JSON data for running the test can be found here:
 
 * Rank codes are 0 index based with 2 being low and Ace being high
 * Suits are 0 index based: [Spades = 0, Clubs = 1, Hearts = 2, Diamonds = 3]
-* Simply paste you JSON data in the field provided and click the Run button.  As long as your JSON is valid, you will see results below.
+* Simply paste your JSON data in the field provided and click the Run button.  As long as your JSON is valid, you will see results below.
+
+###Thanks for reviewing this!! - Steve
 
 
