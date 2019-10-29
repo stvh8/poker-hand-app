@@ -1,8 +1,8 @@
-@import '../../theme/variables.scss';
+@import '../../../theme/variables';
 header.header-background{
   width: 100%; float: left;
   margin-bottom: 0px;
-  background: url('../../assets/images/header-bg.svg') 50% repeat-x, #00bcd4;
+  background: url('../../../assets/images/header-bg.svg') 50% repeat-x, #00bcd4;
   padding: 40px 0;
   .header-section{
     text-align: center; font-family: $font-stack;

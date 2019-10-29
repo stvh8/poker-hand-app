@@ -1,14 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';1
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// import { MatGridListModule } from '@angular/material'
 
 import { AppComponent } from './app.component';
-import { TopNavComponent, FooterComponent } from './shared';
-import { HomeModule } from './home/index';
+import { TopNavComponent, FooterComponent } from './components/shared';
+import { HomeModule } from './components/home';
 
 import { routes } from './app.routes';
+
+import { PokerEvaluateService } from "./providers/poker-evaluate/poker-evaluate.service";
 
 @NgModule({
   declarations: [
@@ -21,9 +25,11 @@ import { routes } from './app.routes';
     HomeModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    // MatGridListModule
   ],
-  providers: [],
+  providers: [PokerEvaluateService],
   bootstrap: [AppComponent],
   exports: [TopNavComponent, FooterComponent]
 })
+
 export class AppModule { }
